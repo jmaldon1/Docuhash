@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include layout.ejs %>
+<title>Register</title>
+</head>
+<body>
+	<div class="main container" style="color:#686b70;">
+		<form class="pure-form pure-form-aligned" method="POST" action="/register">
+		    <fieldset>
+
+				<div class="pure-control-group">
+		            <label for="fullname">Name*</label>
+		            <input id="fullname" type="text" placeholder="First and last" name="fullname">
+		        </div>
+
+		        <div class="pure-control-group">
+		            <label for="username">Username*</label>
+		            <input id="username" type="text" placeholder="Username" name="username">
+		        </div>
+
+		        <div class="pure-control-group">
+		            <label for="email">Email Address*</label>
+		            <input id="email" type="email" placeholder="Email Address" name="email">
+		        </div>
+
+		        <div class="pure-control-group">
+		            <label for="password">Password*</label>
+		            <input id="password" type="password" placeholder="Password" name="password">
+		        </div>
+
+
+		        <div class="pure-control-group">
+		            <label for="confirmPassword">Confirm Password*</label>
+		            <input id="confirmPassword" type="password" placeholder="Confirm Password" name="confirmPassword">
+		        </div>
+
+		        <div class="pure-controls">
+		            <label for="cb" class="pure-checkbox">
+		                <input id="cb" type="checkbox"> I've read the terms and conditions
+		            </label>
+
+		            <button type="submit" class="pure-button pure-button-primary">Submit</button>
+		        </div>
+		    </fieldset>
+		</form>
+</div>
+	
+</body>
+</html>

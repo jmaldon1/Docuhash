@@ -1,0 +1,19 @@
+body{
+  margin-top: 60px;
+}
+.jumbotron{
+  background-color: #ddd;
+  margin-left:-100px;
+  margin-right:-100px;
+}
+
+h1{
+  text-align: center;
+  margin-left:-20px;
+  margin-right:-20px;
+  margin-top:-20px;
+  margin-bottom:70px;
+}
+.btn-large{
+  width: 300px;
+}
