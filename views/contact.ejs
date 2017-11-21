@@ -27,8 +27,20 @@
   </form>
 
   <br>
-  <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img">
+  <!-- <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img">
+  -->
 </div>
+<script>
+  window.addEventListener('load', function() {
+        // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+        if (typeof web3 !== 'undefined') {
+
+        } else {
+            console.log('No web3? You should consider trying MetaMask!')
+        }  
+     })
+
+  </script>
 	</main>
 
 </body>
