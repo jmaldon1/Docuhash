@@ -1,0 +1,40 @@
+<head>
+    <link rel="stylesheet" href="/stylesheets/review.css" />
+</head>
+<main>
+    <h3>My Document Hashes</h3>
+    <div class="row">
+        {{# if files}} 
+        <ul class="collapsible popout" data-collapsible="accordion">
+        {{# each files}}
+            <li>
+      			<div class="collapsible-header"><i class="material-icons">place</i>
+      				<p>
+	      				<u>{{ originalName }}</u> <br>
+	      				Hashed Document:  <br> 
+	      				<b>{{ hash }}</b>
+      				</p>
+      			</div>
+
+      			<div class="collapsible-body">
+                        <a href="/review1" class="secondary-content" name="close"><i class="material-icons right red-text" id="{{ index }}">close</i></a>
+                    <span>
+                        <p>
+                            Time file was hashed: <b>{{ time }} (UTC)</b> </br>
+                        </p>
+                    </span>
+                    <span>
+                        <p>
+                            Contract Address: <b>{{contractAddress}}</b>
+                        </p>
+                    </span>
+                </div>
+    		</li>
+        {{/ each}} 
+         </ul>
+        {{ else }}
+        <h4>Your hashes documents will be here</h4> 
+        {{/ if}}
+
+    </div>
+</main>

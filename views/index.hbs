@@ -1,0 +1,35 @@
+<head>
+    <link rel="stylesheet" href="/stylesheets/index.css" />
+</head>
+<div class="general">
+    <div class="container">
+        <center>
+            <h1>
+          Begin storing your documents on the Blockchain!
+        </h1>
+            {{# if loggedIn}}
+                <a class="waves-effect waves-light btn-large" href="upload">Get Started</a>
+            {{ else }}
+                <a class="waves-effect waves-light btn-large" href="login">Get Started</a>
+            {{/ if}}
+        </center>
+    </div>
+    <div class="panels" id="indexPanels">
+        <center>
+            <div class="row">
+                <div class="col s4">
+                    <h3>Problem</h3>
+                    <p>How can you trust that a document hasn't been changed when you are storing that document on your computer or in a database owned by a company? In a world full of uncertainty, anything is possible and one cannot be too careful.</p>
+                </div>
+                <div class="col s4">
+                    <h3>Solution</h3>
+                    <p>Each character in the document is used in the creation of a unique string of letters and numbers called a Hash. This Hash is stored on the immutable Ethereum Blockchain meaning it cannot ever be changed or deleted. Therefore, so long as the document in your possession matches the hash on the Blockchain, you have complete certainty that the document in your posession is the original, unmodified version.</p>
+                </div>
+                <div class="col s4">
+                    <h3>How It Works</h3>
+                    <p>Once a document has been uploaded, it is put through a Sha3 hashing algorithm. This outputs a Hash that is then passed into a smart contract and deployed onto the Ethereum Blockchain. We will provide each user with the contract address, a timestamp, and the hash of the document. </p>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>

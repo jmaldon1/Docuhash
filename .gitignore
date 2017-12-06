@@ -60,3 +60,6 @@ typings/
 # uploads
 public/uploads/
 
+# keys
+keys.js
+

@@ -4,7 +4,6 @@ contract HoldNDA
 {
     address public issuer; 
     string hashedNDA;
-    uint counter = 0;
 
     modifier onlyIssuer()
     {
@@ -14,10 +13,6 @@ contract HoldNDA
     function HoldNDA(string myHash) public
     {
         issuer = msg.sender;
-        hashedNDA = myHash;
-    }
-    
-    function changeNDA(string myHash) public onlyIssuer{
         hashedNDA = myHash;
     }
     

@@ -2,6 +2,29 @@
 
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
+
+var FileSchema = new mongoose.Schema({
+	path: {
+		type: String,
+		unique: true
+	},
+	originalname: {
+		type: String
+	},
+	mimetype: {
+		type: String
+	},
+	hash: {
+		type: String
+	},
+	time: {
+		type: String
+	},
+	contractaddress: {
+		type: String
+	}
+});
+
 var UserSchema = new mongoose.Schema({
 
 	fullname: {
@@ -11,9 +34,13 @@ var UserSchema = new mongoose.Schema({
 	},
 
 	username: {
+		//type of text that will be in the input field
 		type: String,
+		//checks database to see if the username already exists
 		unique: true,
+		//the field is required
 		required: true,
+		//trims any whitespace off the front and back of the input field
 		trim: true,
 	},
 	email: {
@@ -25,32 +52,36 @@ var UserSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: true,
-	}
+	},
+	files: [
+		FileSchema
+	]
 });
 
 //authenticate input against database documents
 UserSchema.statics.authenticate = function (email, password, callback){
-	User.findOne({ email:email })
-		.exec(function (error, user){
-			if(error) {
-				return callback(error);
-			} else if (!user) {
-				var err = new Error ('User not found.');
-				err.status = 401;
-				return callback(err);
+	//searches database for username or email
+	User.findOne({ $or: [{email: email},{username: email}] }).exec(function (error, user){
+		if(error) {
+			return callback(error);
+		} else if (!user) {
+			var err = new Error ('User not found.');
+			err.status = 401;
+			return callback(err);
+		}
+		bcrypt.compare(password, user.password, function(error, result) {
+			if (result === true) {
+				return callback(null, user);
+			} else{
+				return callback();
 			}
-			bcrypt.compare(password, user.password, function(error, result) {
-				if (result === true) {
-					return callback(null, user);
-				} else{
-					return callback();
-				}
-			})
-		});
+		})
+	});
 }
 
 //hash password before saving to database
 UserSchema.pre('save', function(next) {
+	console.log('there')
 	var user = this;
 	bcrypt.hash(user.password, 10, function(err, hash) {
 		if (err) {
@@ -64,4 +95,7 @@ UserSchema.pre('save', function(next) {
 
 
 var User = mongoose.model('User', UserSchema);
-module.exports = User;
+var File = mongoose.model('File', FileSchema);
+
+module.exports.File = File;
+module.exports.User = User;

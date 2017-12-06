@@ -1,0 +1,18 @@
+a {
+	text-decoration: none !important;
+}
+a:hover {
+	color: white;
+}
+a:focus {
+	color: white;
+}
+.nav-wrapper{
+  background-color:white;
+ 
+
+}
+.general{
+	margin-bottom:40px;
+	color: black !important;
+}

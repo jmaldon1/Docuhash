@@ -1,0 +1,82 @@
+<head>
+        <link rel="stylesheet" href="/stylesheets/register.css" />
+</head>
+
+<body>
+    {{# if messageReg}} 
+        <div class="row">
+            <div class="col s4">
+                <li> <span class="badge red white-text left">{{messageReg}}</span></li>
+            </div>
+        </div>
+        {{/ if}}
+        {{# if errorsReg}}
+        <section>
+            <ul>
+                {{# each errorsReg}} 
+                    <div class="row">
+                        <div class="col s4">
+                            <li> <span class="badge red white-text left">{{this.msg}}</span></li>
+                        </div>
+                    </div>
+                {{/ each}}
+            </ul>
+        </section>
+        {{/ if}}
+    <div class="row">
+        <div class="col s6">
+            <h3>Register using email</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <hr style="width:400px;text-align:left;margin-left:0;margin-top:-20px;margin-bottom: -20px;">
+        </div>
+    </div>
+    <div class="row">
+        <form class="col s8" method="POST" action="/register">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="fullname" type="text" class="validate" name="fullname">
+                    <label id ="nameError" for="fullname">Full Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="username" type="text" class="validate" name="username">
+                    <label id ="userError" for="username">Username</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="email" type="email" class="validate" name="email">
+                    <label id ="emailError" for="email">Email</label>
+                </div>
+                <div class="input-field col s1">
+                    <h4 style="margin-left:200px;">OR</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="password" type="password" class="validate" name="password">
+                    <label id="passError" for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="confirmPassword" type="password" class="validate" name="confirmPassword">
+                    <label id="confirmError" for="confirmPassword">Confirm Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <button class="btn waves-effect waves-light right disabled" style="margin-top:-30px;" id="submit-btn" type="submit" name="action">Sign Up
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="col s4">
+            <div class="g-signin2" data-width="240" data-height="50" data-longtitle="true" href="upload">
+        </div>
+    </div>
+</body>
