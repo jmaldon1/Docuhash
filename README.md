@@ -7,7 +7,7 @@ This project includes:
 
 -User Login/Authentication system
 
--MongoDB database that stores all hash information
+-MongoDB database that stores all hash & user information
 
 -PDF parser that converts PDF documents to TXT document to allow for document Hashing
 
