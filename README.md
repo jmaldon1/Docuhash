@@ -1,6 +1,6 @@
 # Document Hashing website using Ethereum Blockchain
 
-# PURPOSE:
+# Purpose:
 This website is used to prove that a document has not been altered. This is done by using all the data in a document to create a string of characters called a Hash. This hash will be associated with a document and if the document is ever changed, even in the slightest, the hash will change and there is now evidence the document has been altered. 
 
 # Why I decided to use the Ethereum Blockchain?
