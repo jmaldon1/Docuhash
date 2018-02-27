@@ -22,3 +22,5 @@ We allow a user to upload a document, hash it using a Sha3 algorithm, store that
 -PDF parser that converts PDF documents to TXT document to allow for document Hashing
 
 -Connectivity to the Ethereum blockchain through the Web3 API
+
+-JQuery to provide feedback to the user when using things such as registration form
