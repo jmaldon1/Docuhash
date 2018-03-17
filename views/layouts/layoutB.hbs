@@ -3,6 +3,7 @@
 
 <head>
     <title>{{ title }}</title>
+    <link rel="shortcut icon" type="image/png" href="/images/docuhash_favicon.ico"/>
     <meta charset="utf-8" />
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,8 +20,11 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="/stylesheets/materialize.css" media="screen,projection" />
+    <!--Import dropzone.css -->
+    <link type="text/css" rel="stylesheet" href="/stylesheets/dropzone.css" media="screen,projection" />
     <!--Import sidenavbar.css-->
     <link rel="stylesheet" href="/stylesheets/sidenavbar.css" />
+    <link rel="stylesheet" href="/stylesheets/upload.css" />
 </head>
 
 <body>
@@ -38,11 +42,11 @@
                         <a><span class="black-text email">{{ userEmail }}</span></a>
                     </div>
                 </li>
-                <li><a class="waves-effect item" href="/"><i class="material-icons">home</i>Homepage</a></li>
-                <li><a class="waves-effect item" href="upload"><i class="material-icons">file_upload</i>Upload</a></li>
+                <li><a class="waves-effect item" href="/"><i class="material-icons">home</i>Upload</a></li>
+                {{!-- <li><a class="waves-effect item" href="/"><i class="material-icons">file_upload</i>Upload</a></li> --}}
                 <li><a class="waves-effect item" href="review"><i class="material-icons">folder</i>Review</a></li>
                 <li><a class="waves-effect item" href="contract"><i class="material-icons left">search</i>Find Hash</a></li>
-                <li><a class="waves-effect item" href="#!"><i class="material-icons left">group</i>Share</a></li>
+                {{!-- <li><a class="waves-effect item" href="#!"><i class="material-icons left">group</i>Share</a></li> --}}
                 <li><a class="waves-effect item" href="logout"><i class="material-icons left">exit_to_app</i>Logout</a></li>
             </ul>
             <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
@@ -51,12 +55,13 @@
     <div class="col s12 m8 l9">
         {{{body}}}
     </div>
+    <script type="text/javascript" src="/javascript/handlebars/handlebars-v4.0.11.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <!--Import web3.js-->
-    <script src="/javascript/web3_dist/web3.min.js"></script>
+    <script type="text/javascript" src="/javascript/web3_dist/web3.min.js"></script>
     <!--Import dropzone.js-->
-    <script src="/stylesheets/dropzone/dropzone.js"></script>
+    <script type="text/javascript" src="/javascript/dropzone/dropzone.js"></script>
     <!--Import tether.js-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <!--Import boostrap.js-->
@@ -70,39 +75,7 @@
 
     <script type="text/javascript" src="/javascript/sidenavbar.js"></script>
 
-    <script>
-        // $(document).ready(function() {
-        //     $('.close').click(function(event){
-        //         var eventDetails = 'Event = ' + event.target.id;
-        //         console.log(eventDetails);
-        //     });
-        // });
-
-    // $(document).ready(function() {
-    //   $(".hash").each (function () {
-    //     var text = $(this).text();
-    //     if (text.length > 27)
-    //      $(this).text(text.substring(0,27) + ' ' + text.substring(27));
-    //     });
-    // });
-
-    //     $(document).ready(function() {
-
-    //         $(".hash").text("here");
-    //         $("#hash2").text("here2");
-    //         $(".hash").each (function () {
-    //             var text = $(this).text();
-    //             if (text.length > 27)
-    //                 var hash1 = text.substring(0,27);
-    //                 var hash2 = text.substring(27,55);
-    //                 //$(this).text(hash1);
-    //                 $(".hash").text("here");
-    //                 //document.getElementById("#hash2").innerHTML = "here";
-    //                 $("#hash2").text("here2");
-                
-    //     });
-    // });
-    </script>
+    <script type="text/javascript" src="/javascript/review.js"></script>
+    <script type="text/javascript" src="/javascript/metamask-info.js"></script>
 </body>
-
 </html>

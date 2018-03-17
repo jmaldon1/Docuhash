@@ -1,3 +1,36 @@
 #indexPanels{
-	margin-top:60px;
+color:white;
+margin-bottom:-20px;
+}
+.break{
+	background-color: #2a4c84;
+	/*margin-top: 10px;*/
+	height: 20px;
+}
+
+.dropzone{
+	margin:left;
+	margin-top:20px;
+	margin-bottom:20px;
+	margin-left:5px;
+	width: 600px;
+	height:300px;
+	border:2px dashed #ccc;
+	color: #ccc;
+	line-height: 200px;
+	text-align: center;
+}
+
+.dropzone.dragover{
+	border-color: #000;
+	color: #000;
+}
+body {
+display: flex;
+min-height: 100vh;
+flex-direction: column;
+}
+
+main {
+flex: 1 0 auto;
 }

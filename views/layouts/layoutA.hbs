@@ -3,6 +3,7 @@
 
 <head>
     <title>{{ title }}</title>
+    <link rel="shortcut icon" type="image/png" href="/images/docuhash_favicon.ico"/>
     <meta charset="utf-8" />
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,49 +20,96 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="/stylesheets/materialize.css" media="screen,projection" />
+    <!--Import dropzone.css -->
+    <link type="text/css" rel="stylesheet" href="/stylesheets/dropzone.css" media="screen,projection" />
     <!--Import navbar.css-->
     <link rel="stylesheet" href="/stylesheets/navbar.css" />
+    <link rel="stylesheet" href="/stylesheets/info.css" />
+    <link rel="stylesheet" href="/stylesheets/index.css" />
 </head>
 <header>
     <!--NAVBAR-->
     <nav class="general">
         <div class="nav-wrapper">
-            <a href="/" class="brand-logo black-text">Home</a>
+            <a href="/" class="brand-logo black-text" style="display:inline-block;height:100%;width:15%;"><img height="100%" width="100%" src="/images/docuhash_logo.png"/></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="/contract" class="black-text">Find Hash</a></li>
                 {{# if loggedIn}}
-                    <li><a href="upload" class="black-text">Profile</a></li>
-                    <li><a href="logout" class="black-text">Logout</a></li>
+                    <li><a href="/review" class="black-text">Profile</a></li>
+                    <li><a href="/logout" class="black-text">Logout</a></li>
                 {{ else }}
-                    <li><a href="register" class="black-text">Sign up</a></li>
-                    <li><a href="login" class="black-text">Login</a></li>
+                    <li><a href="/register" class="black-text">Sign up</a></li>
+                    <li><a href="/login" class="black-text">Login</a></li>
                 {{/ if}}
             </ul>
         </div>
     </nav>
 </header>
+    <body>
+        <main>
+        {{{body}}}
+        </main>
+        <footer class="page-footer" style="background-color:#2a4c84" id="footerLinks">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Donate</h5>
+                        <ul>
+                            <li>
+                                ETH: <b><a href="https://etherscan.io/address/0x860384d39e6EF17b2442dCCa0d5B1dA658a30B9C" target="_blank"><b><span>0x860384d39e6EF17b2442dCCa0d5B1dA658a30B9C</span></b></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Connect</h5>
+                        <ul>
+                            <li>
+                            <a class="github-button" href="https://github.com/jmaldon1/docuhash" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star jmaldon1/docuhash on GitHub">Star</a></li>
+                            <li>
+                            <a class="github-button" href="https://github.com/jmaldon1" data-size="large" aria-label="Follow @jmaldon1 on GitHub">Follow @jmaldon1</a></li>
+                            {{!-- <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li> --}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2018 DocuHash
+                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                </div>
+            </div>
+        </footer>
 
-<body>
-    {{{body}}}
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <!--Import web3.js-->
-    <script src="/javascript/web3_dist/web3.min.js"></script>
-    <!--Import dropzone.js-->
-    <script src="/stylesheets/dropzone/dropzone.js"></script>
-    <!--Import tether.js-->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-    <!--Import boostrap.js-->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> -->
-    <!--Import materialize.js-->
-    <script type="text/javascript" src="/javascript/materialize/materialize.js"></script>
-    <!--Import Google Platform Library-->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <!--Import Google Platform Library Render button-->
-    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+        <script type="text/javascript" src="/javascript/handlebars/handlebars-v4.0.11.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <!--Import web3.js-->
+        <script type="text/javascript" src="/javascript/web3_dist/web3.min.js"></script>
+        <!--Import dropzone.js-->
+        <script type="text/javascript" src="/javascript/dropzone/dropzone.js"></script>
+        <!--Import tether.js-->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <!--Import boostrap.js-->
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> -->
+        <!--Import materialize.js-->
+        <script type="text/javascript" src="/javascript/materialize/materialize.js"></script>
+        <!--Import Google Platform Library-->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <!--Import Google Platform Library Render button-->
+        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
 
-    <script type="text/javascript" src="/javascript/register.js"></script>
-    <script type="text/javascript" src="/javascript/navbar.js"></script>
-</body>
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+        <script type="text/javascript" src="/javascript/register.js"></script>
+        <script type="text/javascript" src="/javascript/navbar.js"></script>
+        <script type="text/javascript" src="/javascript/index-home.js"></script>
+        <script type="text/javascript" src="/javascript/metamask-info.js"></script>
+        <script type="text/javascript" src="/javascript/login.js"></script>
+        <script type="text/javascript" src="/javascript/contract.js"></script>
+        <script type="text/javascript" src="/javascript/layoutA.js"></script>
+    </body>
 </html>

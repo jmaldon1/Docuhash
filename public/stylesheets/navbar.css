@@ -8,11 +8,11 @@ a:focus {
 	color: white;
 }
 .nav-wrapper{
-  background-color:white;
+	background-color:white;
  
 
 }
 .general{
-	margin-bottom:40px;
+	/*margin-bottom:40px;*/
 	color: black !important;
 }

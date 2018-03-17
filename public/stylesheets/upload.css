@@ -1,0 +1,14 @@
+.dropzone{
+	margin:auto;
+	margin-top:10px;
+	width: 600px;
+	height:300px;
+	border:2px dashed #ccc;
+	color: #ccc;
+	line-height: 200px;
+	text-align: center;
+}
+.dropzone.dragover{
+	border-color: #000;
+	color: #000;
+}

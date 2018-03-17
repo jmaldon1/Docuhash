@@ -1,0 +1,3 @@
+if(document.getElementById("footerLinks")){
+	
+};

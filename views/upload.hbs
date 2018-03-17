@@ -1,9 +1,10 @@
-<main>
+{{!-- <main>
+    <div id ="upload-page"></div>
     <div class="container">
         {{# if uploadSuccess}}
         <div class="row">
             <div class="col s4">
-                <span class="badge green white-text left">{{uploadSuccess}}</span>>
+                <span class="badge green white-text left">{{uploadSuccess}}</span>
             </div>
         </div>
         {{/ if}} 
@@ -14,31 +15,10 @@
             </div>
         </div>
         {{/ if}} 
-        <p>{{ foo }}</p>
-        <p>{{ bar }}</p>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-            <div class="file-field input-field">
-                <div class="btn">
-                    <span>File</span>
-                    <input name="fileUpload" type="file">
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                </div>
+        <form id="myUpload" enctype="multipart/form-data" action="/upload" method="POST" class="dropzone">
+            <div class="fallback">
+                <input name="fileUpload" type= "file" />
             </div>
-            <button type="submit" class="btn">Submit</button>
         </form>
     </div>
-    <script>
-    var isWeb3;
-    window.addEventListener('load', function() {
-        // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-        if (typeof web3 !== 'undefined') {
-            isWeb3 = true;
-        } else {
-            console.log('No web3? You should consider trying MetaMask!')
-            isWeb3 = false;
-        }
-    })
-    </script>
-</main>
+</main> --}}

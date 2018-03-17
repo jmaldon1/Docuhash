@@ -3,12 +3,17 @@
 </head>
 <main>
     <h3>My Document Hashes</h3>
-    <div class="row">
+    <div class="row" id ="review-page">
         {{# if files}} 
         <ul class="collapsible popout" data-collapsible="accordion">
         {{# each files}}
-            <li>
-      			<div class="collapsible-header"><i class="material-icons">place</i>
+            <li id={{ index }}>
+      			<div class="collapsible-header">
+                    {{# if contractAddress}}
+                    <i class="material-icons green-text">place</i>
+                    {{ else }}
+                    <i class="material-icons red-text">place</i>
+                    {{/ if}}
       				<p>
 	      				<u>{{ originalName }}</u> <br>
 	      				Hashed Document:  <br> 
@@ -16,17 +21,47 @@
       				</p>
       			</div>
 
-      			<div class="collapsible-body">
-                        <a href="/review1" class="secondary-content" name="close"><i class="material-icons right red-text" id="{{ index }}">close</i></a>
+      			<div class="collapsible-body" id="2">
+                        <a href="#" class="secondary-content"><i name="close" class="material-icons right red-text" id="{{ hash }}">close</i></a>
+
+                    <div id="modal1" class="modal mod{{ index }}">
+                        <div class="modal-content">
+                            <h4>NOTICE:</h4>
+                            <p>Deleting this hash will ONLY delete it from your review folder, the hash will not be deleted from our server OR the Ethereum Blockchain</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a style="margin-right:20px;"class="modal-action modal-close waves-effect btn-flat grey white-text">Cancel</a>
+                            <a name="clickDelete" id= "del{{ index }}" class="modal-action modal-close waves-effect waves-red btn-flat red white-text">Delete</a>
+                        </div>
+                    </div>
+
                     <span>
                         <p>
                             Time file was hashed: <b>{{ time }} (UTC)</b> </br>
                         </p>
                     </span>
                     <span>
-                        <p>
-                            Contract Address: <b>{{contractAddress}}</b>
-                        </p>
+                        {{# if txHash }}
+                            <p>
+                                Tx Hash: <a href="https://etherscan.io/tx/{{ txHash }}" target="_blank"><b><span id="getTxHash">{{ txHash }}</span></b></a>
+                            </p>
+                            {{!-- if the hash exists but the contract address doesnt, do this --}}
+                            {{# if contractAddress}}
+                            {{ else }}
+                                <img src="/images/ajax-loader.gif" id="loader" width="30" height="30" style="display:none"/>
+                                <button name = "mined" class="loaderButton btn-flat grey white-text" id="{{ txHash }}">Check if contract has been mined</button>
+                            {{/ if}}
+                        {{ else }}
+                            <a href="/info/{{ hash }}">
+                                Click here to add this hash to the Ethereum Blockchain
+                            </a>
+                        {{/ if}}
+                        {{!-- if the contract address exists do this --}}
+                        {{# if contractAddress }}
+                            <p>
+                                Contract Address: <b>{{ contractAddress }}</b>
+                            </p>
+                        {{/ if}}
                     </span>
                 </div>
     		</li>

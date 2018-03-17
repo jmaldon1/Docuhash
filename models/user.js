@@ -5,8 +5,7 @@ var bcrypt = require('bcrypt');
 
 var FileSchema = new mongoose.Schema({
 	path: {
-		type: String,
-		unique: true
+		type: String
 	},
 	originalname: {
 		type: String
@@ -21,6 +20,9 @@ var FileSchema = new mongoose.Schema({
 		type: String
 	},
 	contractaddress: {
+		type: String
+	},
+	txhash: {
 		type: String
 	}
 });
@@ -81,7 +83,6 @@ UserSchema.statics.authenticate = function (email, password, callback){
 
 //hash password before saving to database
 UserSchema.pre('save', function(next) {
-	console.log('there')
 	var user = this;
 	bcrypt.hash(user.password, 10, function(err, hash) {
 		if (err) {

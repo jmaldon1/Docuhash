@@ -1,33 +1,21 @@
-<main>
-	<h3>Find the Hash in a smart contract</h3>
-	<form class="col s12" method="POST" action="/contract">
+<main id="contract-page">
+	<h3>Find the Document's Hash in a smart contract</h3>
 		<div class="row">
 		    <div class="col s12">
-		        Enter an address of a Smart Contract:
+		        Enter the address of an Ethereum Smart Contract:
 		        <div class="input-field inline">
-		            <input id="contractAddress" name="contractAddress" type="text">
+		            <input id="contractAddress" name="contractAddress" type="text" style="padding-right:192px;">
 		            <label for="contractAddress">Contract Address</label>
 		        </div>
 		    </div>
 		</div>
-		<div class="row">
             <div class="input-field col s5">
-                <button class="btn waves-effect waves-light right" style="margin-top:-30px;" id="search-btn" type="submit" name="action">Search
+                <button class="btn waves-effect waves-light" style="margin-top:-30px;margin-left:28%;background-color:#2a4c84;" id="search-btn">Search
                 </button>
             </div>
-        </div>
-	</form>
-	{{# if findHash}}
-		<div class ="row">
-			<p>Hash found: <b>{{ findHash }}</b>
-			</p>
+		<div>
+			<p id="invalidAddress" class = "red-text"style="display:none;"> <b>This Address is not valid </b></p>
+			<p id="hashNotFound" class = "red-text"style="display:none;"> <b>A Hash was not found at this address </b></p>
+			<p id="hashFound" style="display:none;"><span class = "green-text"><b>Hash found in contract: </b></span><b id="displayResult"></b> </p>
 		</div>
-	{{/ if }}
-	{{# if hashError }}
-        <div class="row">
-            <div class="col s4">
-                <span class="badge red white-text left">{{ hashError }}</span>
-            </div>
-        </div>
-	{{/ if}}
 </main>

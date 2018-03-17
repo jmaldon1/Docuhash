@@ -31,7 +31,7 @@ var app = express();
 //     }));
 
 //mongodb connection
-mongoose.connect("mongodb://localhost:27017/nda", {
+mongoose.connect("mongodb://localhost:27017/docuhash", {
 	useMongoClient: true
 })
 var db = mongoose.connection;
@@ -68,14 +68,6 @@ app.use(express.static(__dirname + '/public'));
 app.engine('hbs', exphbs({extname: 'hbs', defaultLayout: 'layoutA', layoutsDir: __dirname + '/views/layouts'}));
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
-
-var hbs = exphbs.create({
-    // Specify helpers which are only registered on this instance.
-    helpers: {
-        foo: function () { return 'foo.'; },
-        bar: function () { return 'BAR!'; }
-    }
-});
 
 // include routes
 var routes = require('./routes/index');

@@ -2,11 +2,11 @@
         <link rel="stylesheet" href="/stylesheets/register.css" />
 </head>
 
-<body>
+<main id ="register-page">
     {{# if messageReg}} 
         <div class="row">
             <div class="col s4">
-                <li> <span class="badge red white-text left">{{messageReg}}</span></li>
+                <span class="badge red white-text left">{{messageReg}}</span></br>
             </div>
         </div>
         {{/ if}}
@@ -16,7 +16,7 @@
                 {{# each errorsReg}} 
                     <div class="row">
                         <div class="col s4">
-                            <li> <span class="badge red white-text left">{{this.msg}}</span></li>
+                             <span class="badge red white-text left">{{this.msg}}</span></br>
                         </div>
                     </div>
                 {{/ each}}
@@ -52,9 +52,9 @@
                     <input id="email" type="email" class="validate" name="email">
                     <label id ="emailError" for="email">Email</label>
                 </div>
-                <div class="input-field col s1">
+{{!--                 <div class="input-field col s1">
                     <h4 style="margin-left:200px;">OR</h4>
-                </div>
+                </div> --}}
             </div>
             <div class="row">
                 <div class="input-field col s6">
@@ -70,13 +70,14 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <button class="btn waves-effect waves-light right disabled" style="margin-top:-30px;" id="submit-btn" type="submit" name="action">Sign Up
+                    <img src="/images/reg-loader.gif" id="regloader" width="15%" height="15%" style="margin-left:80%; display:none;"/>
+                    <button class="btn waves-effect waves-light right" style="margin-top:-30px;background-color:#2a4c84;" id="submit-btn" type="submit" name="action">Sign Up
                     </button>
                 </div>
             </div>
         </form>
-        <div class="col s4">
+        {{!-- <div class="col s4">
             <div class="g-signin2" data-width="240" data-height="50" data-longtitle="true" href="upload">
-        </div>
+        </div> --}}
     </div>
-</body>
+</main>

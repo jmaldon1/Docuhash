@@ -1,0 +1,65 @@
+<main>
+	<div id ="info-page"></div>
+	<!-- If the document's hash exists but it is not yet on the blockchain, display this-->
+	{{# if exists}}
+		<div class="container">
+			<h4 style="text-align:center;">The document's hash has been created and stored on our server</br></br></h4>
+					<p style="text-align:center;">Document Hash: <b>{{ hash }}</b></br></br>Time document was hashed: <b>{{ time }} (UTC)</b></br></p> 
+					{{!-- if transaction hash exists --}}
+					{{# if txHash}}
+						<p style="text-align:center;">Transaction Hash: <a id="txLink" href="https://etherscan.io/tx/{{ txHash }}" target="_blank"><b>{{ txHash }}</b></a></p>
+					{{/ if}}
+			{{!-- If the contract address DOES NOT EXIST, DO THIS --}}
+			{{# if addressExists}}
+			{{ else }}
+				<div id ="metamask" style = "display:none; text-align:center;margin-top:40px;">
+					<p>Would you like to store the hash on the Ethereum blockchain, so that it can be saved on the internet forever?</p>
+
+					<a class="waves-effect waves-light btn btn-flat" id="blockchain" style="display:block; margin-top:30px;background-color:#699cef">Store on Blockchain</a>
+					<p style="margin-top:-5px;margin-bottom:-15px;text-align:right;"><small>*Make sure you're logged into the MetaMask addon before pressing the button</small></p>
+				</div>
+			{{/ if}}
+			{{# if txHash}}
+				{{!-- if transaction hash exists AND address exists --}}
+				{{# if addressExists}}
+					<p style="text-align:center;">Contract Address: <b>{{ contractAddress }}</b></p>
+					{{!-- if transaction hash exists BUT NOT address --}}
+				{{ else }}
+					<div style="margin-top:50px;border-radius: 25px;background-color:rgb(19, 173, 29,0.2);">
+						<p style="margin-left:15px;">
+						<b>Great!</b> So the document's hash has been sent to the blockchain and is awaiting being mined.</br>
+						There are 2 options now:</br>
+						1. Click the Transaction Hash link and see the pending transaction on <a target="_blank" id="etherioLink" href="https://etherscan.io/">Etherscan.io</a></br>
+						2. Click the button below to check if the smart contract has been mined
+						</p>
+					</div>
+					<div style="justify-content:center;display: flex;margin-bottom:30px;">
+						<img src="/images/ajax-loader.gif" id="loader" width="30" height="30" style="display:none"/>
+						<button name = "minedInfo" class="loaderButton btn-flat grey white-text"id="{{ txHash }}">Check if contract has been mined</button>
+					</div>
+				{{/ if}}
+			{{!-- if transaction hash doesnt exist --}}
+			{{ else }}
+				<div style="margin-top:50px;">
+					<p><i class="material-icons tiny">info</i>If you submitted the transaction through MetaMask but the transaction hash doesnt show up here, these could be the following reasons: </p>
+					<ol>
+						<li>If you have just submitted this transaction please wait for at least 30 seconds before refreshing this page.</li>
+						<li>During times when the network is busy (i.e during ICOs) it can take a while for your transaction to propagate through the network and for <a target="_blank" id="etherioLink" href="https://etherscan.io/">Etherscan.io</a> to index it.</li>
+						<li>There was an error with your transaction and you will need to try again. 
+						</li>
+					</ol>
+				</div>
+			{{/ if}}
+			<div id ="noMetamask" style = "display: none;">
+				<p style="text-align:center;">Seems as though you don't have the MetaMask plugin installed, please click the link below to install it. </br></br> MetaMask provides the easiest way to interact with the Ethereum Blockchain</p>
+				<a href="https://metamask.io/" target="_blank" >
+					<img src="/images/download-metamask.png" alt="MetaMask plugin download link" style="margin:auto; display:block;">
+				</a>
+
+			</div>
+		</div>
+	<!-- If the hash entered in the URL does not exist, display this-->
+	{{ else }}
+		<h4 style="text-align:center;">This hash does not exist</h4>
+	{{/ if}}
+</main>
