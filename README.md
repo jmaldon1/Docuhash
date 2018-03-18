@@ -1,3 +1,5 @@
+# Docuhash.io
+
 # Document Hashing website using Ethereum Blockchain
 
 # Purpose:
@@ -23,4 +25,8 @@ We allow a user to upload a document, hash it using a Sha3 algorithm, store that
 
 -Connectivity to the Ethereum blockchain through the Web3 API
 
--JQuery to provide feedback to the user when using things such as registration form
+-JQuery to provide feedback to the user when using things such as registration form and sending get/post requests to the server
+
+-MetaMask integrations that allows the user to easily interact with Ethereum Blockchain through their browser
+
+-Digital Ocean is being used at the hosting service
