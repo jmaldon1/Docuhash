@@ -32,8 +32,8 @@ $(document).ready(function(){
 					Materialize.toast('Your Contract Has Been Mined!', 3000, 'green');
 					Materialize.toast('Adding Contract Address, please wait...', 3000, 'orange');
 					function contractMined(){
-						$('#loader').hide();
-   						$('.loaderButton').show();
+						// $('#loader').hide();
+   			// 			$('.loaderButton').show();
         				window.location.reload();
 					};
 					setTimeout(contractMined, 3000);

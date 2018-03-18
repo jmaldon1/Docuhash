@@ -3,7 +3,11 @@
 	<!-- If the document's hash exists but it is not yet on the blockchain, display this-->
 	{{# if exists}}
 		<div class="container">
-			<h4 style="text-align:center;">The document's hash has been created and stored on our server</br></br></h4>
+			{{# if addressExists}}
+				<h4 style="text-align:center;">The document's hash has been created, stored on our server, and added to the Ethereum Blockchain</br></br></h4>
+			{{ else }}
+				<h4 style="text-align:center;">The document's hash has been created and stored on our server</br></br></h4>
+			{{/ if}}
 					<p style="text-align:center;">Document Hash: <b>{{ hash }}</b></br></br>Time document was hashed: <b>{{ time }} (UTC)</b></br></p> 
 					{{!-- if transaction hash exists --}}
 					{{# if txHash}}
@@ -12,13 +16,19 @@
 			{{!-- If the contract address DOES NOT EXIST, DO THIS --}}
 			{{# if addressExists}}
 			{{ else }}
-				<div id ="metamask" style = "display:none; text-align:center;margin-top:40px;">
+				<div id ="hasMetamask" style = "display:none; text-align:center;margin-top:40px;">
 					<p>Would you like to store the hash on the Ethereum blockchain, so that it can be saved on the internet forever?</p>
 
 					<a class="waves-effect waves-light btn btn-flat" id="blockchain" style="display:block; margin-top:30px;background-color:#699cef">Store on Blockchain</a>
 					<p style="margin-top:-5px;margin-bottom:-15px;text-align:right;"><small>*Make sure you're logged into the MetaMask addon before pressing the button</small></p>
 				</div>
 			{{/ if}}
+			<div id ="noMetamask" style = "display: none;">
+				<p style="text-align:center;">Seems as though you don't have the MetaMask plugin installed, please click the link below to install it. </br></br> MetaMask provides the easiest way to interact with the Ethereum Blockchain</p>
+				<a href="https://metamask.io/" target="_blank" >
+					<img src="/images/download-metamask.png" alt="MetaMask plugin download link" style="margin:auto; display:block;">
+				</a>
+			</div>
 			{{# if txHash}}
 				{{!-- if transaction hash exists AND address exists --}}
 				{{# if addressExists}}
@@ -33,14 +43,22 @@
 						2. Click the button below to check if the smart contract has been mined
 						</p>
 					</div>
-					<div style="justify-content:center;display: flex;margin-bottom:30px;">
-						<img src="/images/ajax-loader.gif" id="loader" width="30" height="30" style="display:none"/>
-						<button name = "minedInfo" class="loaderButton btn-flat grey white-text"id="{{ txHash }}">Check if contract has been mined</button>
+					<div class="row">
+						<div style="justify-content:center;display: flex;margin-bottom:30px;">
+							<img src="/images/ajax-loader.gif" id="loader" width="30" height="30" style="display:none"/>
+							
+								<button name = "minedInfo" class="loaderButton btn-flat grey white-text"id="{{ txHash }}">Check if contract has been mined</button>
+
+						</div>
 					</div>
+					<div class="row">
+						<p style="margin-top:-55px;text-align:center;"><small>*It could take a few hours for the contract to be mined</small></p>
+					</div>
+
 				{{/ if}}
 			{{!-- if transaction hash doesnt exist --}}
 			{{ else }}
-				<div style="margin-top:50px;">
+				<div  style="margin-top:50px;">
 					<p><i class="material-icons tiny">info</i>If you submitted the transaction through MetaMask but the transaction hash doesnt show up here, these could be the following reasons: </p>
 					<ol>
 						<li>If you have just submitted this transaction please wait for at least 30 seconds before refreshing this page.</li>
@@ -50,13 +68,6 @@
 					</ol>
 				</div>
 			{{/ if}}
-			<div id ="noMetamask" style = "display: none;">
-				<p style="text-align:center;">Seems as though you don't have the MetaMask plugin installed, please click the link below to install it. </br></br> MetaMask provides the easiest way to interact with the Ethereum Blockchain</p>
-				<a href="https://metamask.io/" target="_blank" >
-					<img src="/images/download-metamask.png" alt="MetaMask plugin download link" style="margin:auto; display:block;">
-				</a>
-
-			</div>
 		</div>
 	<!-- If the hash entered in the URL does not exist, display this-->
 	{{ else }}

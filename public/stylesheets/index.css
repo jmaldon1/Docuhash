@@ -34,3 +34,10 @@ flex-direction: column;
 main {
 flex: 1 0 auto;
 }
+
+#nonBlueLinks:visited{
+	color:white; !important;
+}
+#nonBlueLinks:link{
+	color:white; !important;
+}
