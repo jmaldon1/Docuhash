@@ -1,12 +1,39 @@
 window.addEventListener('load', function() {
 	var hasMetaMask = document.getElementById("hasMetamask");
 	var noMetaMask = document.getElementById("noMetamask");
+	var networkId;
 	// Checking if Web3 has been injected by the browser (Mist/MetaMask)
 	if (typeof web3 !== 'undefined') {
 	// Use Mist/MetaMask's provider
 		web3 = new Web3(web3.currentProvider);
 		if(hasMetaMask){hasMetaMask.style.display = "block";}
 		if(noMetaMask){noMetaMask.style.display = "none";}
+		web3.version.getNetwork((err, netId) => {
+		  switch (netId) {
+		    case "1":
+		      $('#mainNet').show();
+		      //console.log('This is mainnet')
+		      break
+		    case "2":
+		      //console.log('This is the deprecated Morden test network.')
+		      break
+		    case "3":
+		      $('#ropstenNet').show();
+		      //console.log('This is the ropsten test network.')
+		      break
+		    case "4":
+		      $('#rinkebyNet').show();
+		      //console.log('This is the Rinkeby test network.')
+		      break
+		    case "42":
+		      $('#kovanNet').show();
+		      //console.log('This is the Kovan test network.')
+		      break
+		    default:
+		      $('#unknownNet').show();
+		      //console.log('This is an unknown network.')
+		  }
+		})
 	} else {
 		console.log('No web3? You should consider trying MetaMask!')
 	    // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)

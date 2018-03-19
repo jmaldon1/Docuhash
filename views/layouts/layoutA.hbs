@@ -67,9 +67,13 @@
                         <h5 class="white-text">Connect</h5>
                         <ul>
                             <li>
-                            <a class="github-button" href="https://github.com/jmaldon1/docuhash" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star jmaldon1/docuhash on GitHub">Star</a></li>
+                                <a class="github-button" href="https://github.com/jmaldon1/docuhash" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star jmaldon1/docuhash on GitHub">Star</a></li>
                             <li>
-                            <a class="github-button" href="https://github.com/jmaldon1" data-size="large" aria-label="Follow @jmaldon1 on GitHub">Follow @jmaldon1</a></li>
+                                <a class="github-button" href="https://github.com/jmaldon1" data-size="large" aria-label="Follow @jmaldon1 on GitHub">Follow @jmaldon1</a>
+                            </li>
+                            <li>
+                                <script type="IN/MemberProfile" data-id="https://www.linkedin.com/in/joshua-maldonado" data-format="click" data-related="false" data-width="400"></script>
+                            </li>
                             {{!-- <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
                             <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li> --}}
                         </ul>
@@ -78,8 +82,38 @@
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    © 2018 DocuHash
-                    {{!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> --}}
+                    <div class="row">
+                        <div class = "col s3">
+                            © 2018 DocuHash
+                        </div>
+                        <div class = "col s9" id="noMetamask" style="display:none">
+                            <span class="right">Currently not connected to MetaMask</span>
+                        </div>
+                        <div class = "col s9" id="mainNet" style="display:none">
+                            <span class="right" >Main Ethereum Network</span>
+                            <img class = "right" style="margin-top:4px;" src="/images/mainethgif.gif" height="3%" width="3%"/>
+                            {{!-- <span class="right" style="margin-right:5px;">Currently Connected to:</span> --}}
+                        </div>
+                        <div class = "col s9" id="ropstenNet" style="display:none">
+                            <span class="right" >Ropsten Test Network</span>
+                            <img class = "right" style="margin-top:4px;" src="/images/ropstengif.gif" height="3%" width="3%"/>
+                            {{!-- <span class="right" style="margin-right:5px;">Currently Connected to:</span> --}}
+                        </div>
+                        <div class = "col s9" id="kovanNet" style="display:none">
+                            <span class="right" >Kovan Test Network</span>
+                            <img class = "right" style="margin-top:4px;" src="/images/kovangif.gif" height="3%" width="3%"/>
+                            {{!-- <span class="right" style="margin-right:5px;">Currently Connected to:</span> --}}
+                        </div>
+                        <div class = "col s9" id="rinkebyNet" style="display:none">
+                            <span class="right" >Rinkeby Test Network</span>
+                            <img class = "right" style="margin-top:4px;" src="/images/rinkebygif.gif" height="3%" width="3%"/>
+                            {{!-- <span class="right" style="margin-right:5px;">Currently Connected to:</span> --}}
+                        </div>
+                        <div class = "col s9" id="unknownNet" style="display:none">
+                            <span class="right" >Currently using an Unknown Network on MetaMask</span>
+                            {{!-- <span class="right" style="margin-right:5px;">Currently Connected to:</span> --}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>
@@ -106,6 +140,8 @@
 
         <!-- Place this tag in your head or just before your close body tag. -->
         <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+        <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
 
         <script type="text/javascript" src="/javascript/register.js"></script>
         <script type="text/javascript" src="/javascript/navbar.js"></script>
