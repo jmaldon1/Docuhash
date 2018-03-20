@@ -1,21 +1,30 @@
 <main id="contract-page">
 	<h3>Find the Document's Hash in a smart contract</h3>
-		<div class="row">
-		    <div class="col s12">
-		        Enter the address of an Ethereum Smart Contract:
-		        <div class="input-field inline">
-		            <input id="contractAddress" name="contractAddress" type="text" style="padding-right:192px;">
-		            <label for="contractAddress">Contract Address</label>
-		        </div>
-		    </div>
+		{{!-- display this if the user doesnt have metamask --}}
+		<div id ="noMetamask" style = "display: none;">
+			<p style="text-align:center;">Seems as though you don't have the MetaMask plugin installed, please click the link below to install it. </br></br> MetaMask provides the easiest way to interact with the Ethereum Blockchain</p>
+			<a href="https://metamask.io/" target="_blank" >
+				<img src="/images/download-metamask.png" alt="MetaMask plugin download link" style="margin:auto; display:block;">
+			</a>
 		</div>
-            <div class="input-field col s5">
-                <button class="btn waves-effect waves-light" style="margin-top:-30px;margin-left:28%;background-color:#2a4c84;" id="search-btn">Search
-                </button>
-            </div>
-		<div>
-			<p id="invalidAddress" class = "red-text"style="display:none;"> <b>This Address is not valid </b></p>
-			<p id="hashNotFound" class = "red-text"style="display:none;"> <b>A Hash was not found at this address </b></p>
-			<p id="hashFound" style="display:none;"><span class = "green-text"><b>Hash found in contract: </b></span><b id="displayResult"></b> </p>
+		<div id="hasMetamask" style="display: none;">
+			<div class="row">
+			    <div class="col s12">
+			        Enter the address of an Ethereum Smart Contract:
+			        <div class="input-field inline">
+			            <input id="contractAddress" name="contractAddress" type="text" style="padding-right:192px;">
+			            <label for="contractAddress">Contract Address</label>
+			        </div>
+			    </div>
+			</div>
+	        <div class="input-field col s5">
+	            <button class="btn waves-effect waves-light" style="margin-top:-30px;margin-left:28%;background-color:#2a4c84;" id="search-btn">Search
+	            </button>
+	        </div>
+			<div>
+				<p id="invalidAddress" class = "red-text"style="display:none;"> <b>This Address is not valid </b></p>
+				<p id="hashNotFound" class = "red-text"style="display:none;"> <b>A Hash was not found at this address </b></p>
+				<p id="hashFound" style="display:none;"><span class = "green-text"><b>Hash found in contract: </b></span><b id="displayResult"></b> </p>
+			</div>
 		</div>
 </main>

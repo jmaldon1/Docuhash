@@ -44,17 +44,17 @@ router.get('/', function(req, res, next) {
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
     req.session.url = fullUrl;
 
-    return res.render('index', { title: 'Home', hash: req.session.shawed });
+    return res.render('index', { title: 'DocuHash', hash: req.session.shawed });
 });
 
-// GET /about
-router.get('/about', function(req, res, next) {
-    return res.render('about', { title: 'About' });
-});
+// // GET /about
+// router.get('/about', function(req, res, next) {
+//     return res.render('about', { title: 'About - DocuHash' });
+// });
 
 //GET /login
 router.get('/login', mid.loggedOut, function(req, res, next) {
-    return res.render('login', { title: 'Login', messageLogin: req.flash('logoutMessage'), errorsLogin: req.session.errorsLogin });
+    return res.render('login', { title: 'Login - DocuHash', messageLogin: req.flash('logoutMessage'), errorsLogin: req.session.errorsLogin });
 });
 
 //POST /login
@@ -98,7 +98,7 @@ router.post('/login', function(req, res, next) {
 
 //GET /contract
 router.get('/contract', function(req, res, next) {
-    return res.render('contract', { title: 'Find a Smart Contract', layout: 'layoutA.hbs'});
+    return res.render('contract', { title: 'Find Hash - DocuHash', layout: 'layoutA.hbs'});
 });
 
 // //POST /contract
@@ -154,7 +154,7 @@ router.get('/review', mid.requiresLogin, function(req, res, next) {
         }
 
         return res.render('review', {
-            title: 'Review',
+            title: 'Review - DocuHash',
             layout: 'layoutB.hbs',
             files: req.session.files,
             userEmail: req.session.userEmail,
@@ -182,7 +182,7 @@ router.get('/logout', function(req, res, next) {
 // GET /register
 router.get('/register', mid.loggedOut, function(req, res, next) {
     req.session.success = null;
-    res.render('register', { title: 'Sign Up', messageReg: req.flash('authMessage'), errorsReg: req.session.errorsReg });
+    res.render('register', { title: 'Sign Up - DocuHash', messageReg: req.flash('authMessage'), errorsReg: req.session.errorsReg });
 });
 
 // POST /register
@@ -488,7 +488,7 @@ router.get('/info/:shawed', function(req, res, next) {
         });
     }
     findHash(function(foundHash, foundAddress) {
-        return res.render('info', { title: 'Info', layout: 'layoutA.hbs', exists: foundHash, addressExists: foundAddress, hash: req.session.currentShaw, time: req.session.currentHashTime, txHash: req.session.currentTxHash, contractAddress: req.session.currentAddress });
+        return res.render('info', { title: 'Info - DocuHash', layout: 'layoutA.hbs', exists: foundHash, addressExists: foundAddress, hash: req.session.currentShaw, time: req.session.currentHashTime, txHash: req.session.currentTxHash, contractAddress: req.session.currentAddress });
     })
 });
 

@@ -52,6 +52,7 @@ app.use(session({
 app.use('/favicon.ico', express.static(__dirname + '/public/images/docuhash_favicon_256x256.ico'));
 app.use('/android-chrome-192x192.png', express.static(__dirname + '/public/images/favicons/android-chrome-192x192.png'));
 app.use('/browserconfig.xml', express.static(__dirname + '/public/images/favicons/browserconfig.xml'));
+app.use('/mstile-150x150.png', express.static(__dirname + '/public/images/favicons/mstile-150x150.png'));
 
 app.use(function(req, res, next){
 	res.locals.loggedIn = req.session.userId;
