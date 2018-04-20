@@ -11,13 +11,19 @@ window.addEventListener('load', function() {
 		web3.version.getNetwork((err, netId) => {
 		  switch (netId) {
 		    case "1":
-		      $('#mainNet').show();
-		      //console.log('This is mainnet')
+			 //    $.post('/metaMask', {'metaMaskConnected': true}, function(success){
+			 //    	console.log(success);
+				// });
+		        $('#mainNet').show();
+		        //console.log('This is mainnet')
 		      break
 		    case "2":
 		      //console.log('This is the deprecated Morden test network.')
 		      break
 		    case "3":
+		  //   	$.post('/metaMask', {'metaMaskConnected': true}, function(success){
+			 //    	console.log(success);
+				// });
 		      $('#ropstenNet').show();
 		      //console.log('This is the ropsten test network.')
 		      break
@@ -36,6 +42,9 @@ window.addEventListener('load', function() {
 		})
 	} else {
 		console.log('No web3? You should consider trying MetaMask!')
+		// $.post('/metaMask', {'metaMaskConnected': false}, function(success){
+		// 	console.log(success);
+		// });
 	    // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
 	    web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 	    if(noMetaMask){noMetaMask.style.display = "block";}
@@ -192,6 +201,8 @@ if(document.getElementById("info-page")){
 		web3.eth.getTransactionReceipt(txHash, function(err, receipt){
 			if(err){
 				Materialize.toast('There was an error, Please try again later...', 5000, 'red');
+				$('#loader').hide();
+				$('.loaderButton').show();
 				throw err
 			};
 			if(receipt == null){

@@ -101,27 +101,6 @@ router.get('/contract', function(req, res, next) {
     return res.render('contract', { title: 'Find Hash - DocuHash', layout: 'layoutA.hbs'});
 });
 
-// //POST /contract
-// router.post('/contract', function(req, res, next) {
-//     var findAddress = req.body.contractAddress;
-//     if (web3.utils.isAddress(findAddress)) {
-//         var newholdNDA = new web3.eth.Contract(contractABI, findAddress)
-//         newholdNDA.methods.callHash().call(function(error, result) {
-//             if (error) {
-//                 req.flash('hashError', 'Hash not found!');
-//                 return res.redirect('contract')
-//             }
-//             req.session.findHash = result
-//             return res.redirect('contract')
-//         });
-//     } else {
-//         req.session.findHash = null;
-//         req.flash('hashError', 'Invalid Ethereum Address');
-//         return res.redirect('contract');
-//     }
-
-// });
-
 //GET /review
 router.get('/review', mid.requiresLogin, function(req, res, next) {
 
@@ -248,7 +227,7 @@ var storage = multer.diskStorage({
 //Multer
 var upload = multer({
     storage: storage,
-    limits: { fileSize: 20000000 },
+    limits: { fileSize: 20000000 }, //Bytes
     fileFilter: function(req, file, cb) {
         checkFileType(file, cb);
     }
@@ -257,7 +236,7 @@ var upload = multer({
 //Check File Type
 function checkFileType(file, cb) {
     // allowed ext
-    var filetypes = /pdf|txt|docx/;
+    var filetypes = /pdf|txt/;
     //Check ext
     var extname = filetypes.test(path.extname(file.originalname).toLowerCase());
     //Check mime
@@ -488,6 +467,7 @@ router.get('/info/:shawed', function(req, res, next) {
         });
     }
     findHash(function(foundHash, foundAddress) {
+        //console.log(req.session.metaMask);
         return res.render('info', { title: 'Info - DocuHash', layout: 'layoutA.hbs', exists: foundHash, addressExists: foundAddress, hash: req.session.currentShaw, time: req.session.currentHashTime, txHash: req.session.currentTxHash, contractAddress: req.session.currentAddress });
     })
 });
@@ -607,5 +587,13 @@ router.post('/delDoc',function(req,res,next){
         res.send(JSON.stringify({ delete: del }));
     })
 });
+
+// //POST to check if user is connected to MetaMask
+// router.post('/metaMask', function(req,res, next){
+//     //console.log('post')
+//     //console.log(req.session.metaMask);
+//     var obj = req.body;
+//     req.session.metaMask = obj.metaMaskConnected;
+// });
 
 module.exports = router;

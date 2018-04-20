@@ -22,6 +22,8 @@ $(document).ready(function(){
 			web3.eth.getTransactionReceipt(txHash, function(err, receipt){
 				if(err){
 					Materialize.toast('There was an error, Please try again later...', 5000, 'red');
+					$('#loader').hide();
+					$('.loaderButton').show();
 					throw err
 				};
 				if(receipt == null){

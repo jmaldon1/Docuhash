@@ -2,8 +2,8 @@ if(document.getElementById("index-page")){
     (function(){
       	Dropzone.options.my = {
       		paramName: "fileUpload", // The name that will be used to transfer the file
-      		maxFilesize: 200, // MB
-            acceptedFiles: 'application/pdf, .txt, .docx',
+      		maxFilesize: 20, // MB
+            acceptedFiles: 'application/pdf, .txt',
             maxFiles: 1,
             init: function(){
         		//on a successful file upload, do this:
