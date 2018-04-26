@@ -19,6 +19,7 @@ $(document).ready(function(){
 			$('#loader').show();
    			$('.loaderButton').hide();
 			var txHash = String(event.target.id)
+			// var icon = 'icon' + txHash
 			web3.eth.getTransactionReceipt(txHash, function(err, receipt){
 				if(err){
 					Materialize.toast('There was an error, Please try again later...', 5000, 'red');
@@ -33,9 +34,12 @@ $(document).ready(function(){
 				}else if(receipt.contractAddress){
 					Materialize.toast('Your Contract Has Been Mined!', 3000, 'green');
 					Materialize.toast('Adding Contract Address, please wait...', 3000, 'orange');
+					// var iconElement = document.getElementById(icon);
+					// iconElement.classList.remove('red-text');
+					// iconElement.classList.add('green-text');
 					function contractMined(){
 						// $('#loader').hide();
-   			// 			$('.loaderButton').show();
+   						//$('.loaderButton').show();
         				window.location.reload();
 					};
 					setTimeout(contractMined, 3000);

@@ -10,15 +10,18 @@
         {{# each files}}
             <li id={{ index }}>
       			<div class="collapsible-header">
-                    {{# if contractAddress}}
+                    {{# if this.contractAddress}}
                     <i class="material-icons green-text">place</i>
                     {{ else }}
                     <i class="material-icons red-text">place</i>
                     {{/ if}}
+{{!-- 
+                    <i class="material-icons red-text" id="icon{{ txHash }}">place</i> --}}
       				<p>
 	      				<u>{{ originalName }}</u> <br>
 	      				Hashed Document:  <br> 
 	      				<b>{{ hash }}</b>
+                        <span>{{ this.contractAddress }}</span>
       				</p>
       			</div>
 

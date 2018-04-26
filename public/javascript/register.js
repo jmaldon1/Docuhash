@@ -1,9 +1,13 @@
 if(document.getElementById("register-page")){
     $( document ).ready(function() {
 
+
         $(document.getElementById("submit-btn")).on('click', function(event){
-            $('#submit-btn').hide();
-            $('#regloader').show();
+            //only show the loading gif if the form was submitted
+            $('#myForm').submit(function(e){
+                $('#submit-btn').hide();
+                $('#regloader').show();
+            });
         });
         var formValid = {
             passedName: false,
@@ -12,6 +16,7 @@ if(document.getElementById("register-page")){
             passedPass: false,
             passedConfirmPass: false
         };
+        // checkValidation();
 
         // function checkValidation() {
         //     if ((formValid.passedName & formValid.passedUser & formValid.passedEmail & formValid.passedPass & formValid.passedConfirmPass) == true) {
@@ -21,15 +26,16 @@ if(document.getElementById("register-page")){
         //     }
         // };
 
+        //Validation that I turned off for now
         $('#fullname').on('input', function() {
             if (($(this).val()).length < 1) {
                 formValid.passedName = false;
-                //checkValidation();
+                // checkValidation();
                 $('#fullname').removeClass('validate').addClass('invalid');
                 $('#nameError').attr("data-error", "Name is required");
             } else {
                 formValid.passedName = true;
-                //checkValidation();
+                // checkValidation();
                 $('#fullname').removeClass('invalid').addClass('validate');
                 $('#nameError').removeAttr("data-error");
             }
@@ -38,19 +44,19 @@ if(document.getElementById("register-page")){
             var username = $(this).val();
             if (username.length <= 2) {
                 formValid.passedUser = false;
-                //checkValidation();
+                // checkValidation();
                 $('#username').removeClass('validate').addClass('invalid');
                 $('#userError').attr("data-error", "Username is too short");
             } else {
                 var testExp = new RegExp(/^[a-zA-Z0-9]+$/);
                 if (!testExp.test(username)) {
                     formValid.passedUser = false;
-                    //checkValidation();
+                    // checkValidation();
                     $('#username').removeClass('validate').addClass('invalid');
                     $('#userError').attr("data-error", "Username cannot contain special characters");
                 } else {
                     formValid.passedUser = true;
-                    //checkValidation();
+                    // checkValidation();
                     $('#username').removeClass('invalid').addClass('validate');
                     $('#userError').removeAttr("data-error");
                 }
@@ -59,12 +65,12 @@ if(document.getElementById("register-page")){
         $('#email').on('input', function() {
             if (($(this).val()).length < 1) {
                 formValid.passedEmail = false;
-                //checkValidation();
+                // checkValidation();
                 $('#email').removeClass('validate').addClass('invalid');
                 $('#emailError').attr("data-error", "Email is required");
             } else {
                 formValid.passedEmail = true;
-                //checkValidation();
+                // checkValidation();
                 $('#email').removeClass('invalid').addClass('validate');
                 $('#emailError').removeAttr("data-error");
             }
@@ -72,12 +78,12 @@ if(document.getElementById("register-page")){
         $('#password').on('input', function() {
             if (($(this).val()).length <= 5) {
                 formValid.passedPass = false;
-                //checkValidation();
+                // checkValidation();
                 $('#password').removeClass('validate').addClass('invalid');
                 $('#passError').attr("data-error", "Password is too short");
             } else {
                 formValid.passedPass = true;
-                //checkValidation();
+                // checkValidation();
                 $('#password').removeClass('invalid').addClass('validate');
                 $('#passError').removeAttr("data-error");
             }
@@ -85,12 +91,12 @@ if(document.getElementById("register-page")){
         $('#confirmPassword').on('input', function() {
             if (($(this).val().toLowerCase()) != ($("#password").val().toLowerCase())) {
                 formValid.passedConfirmPass = false;
-                //checkValidation();
+                // checkValidation();
                 $('#confirmPassword').removeClass('validate').addClass('invalid');
                 $('#confirmError').attr("data-error", "Passwords Do Not Match");
             } else {
                 formValid.passedConfirmPass = true;
-                //checkValidation();
+                // checkValidation();
                 $('#confirmPassword').removeClass('invalid').addClass('validate');
                 $('#confirmError').removeAttr("data-error");
             }
