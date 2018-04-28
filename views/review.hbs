@@ -21,7 +21,6 @@
 	      				<u>{{ originalName }}</u> <br>
 	      				Hashed Document:  <br> 
 	      				<b>{{ hash }}</b>
-                        <span>{{ this.contractAddress }}</span>
       				</p>
       			</div>
 
@@ -54,7 +53,7 @@
                             {{ else }}
                                 <div class="row">
                                     <img src="/images/ajax-loader.gif" id="loader" width="30" height="30" style="display:none"/>
-                                    <button name = "mined" class="loaderButton btn-flat grey white-text" id="{{ txHash }}">Check if contract has been mined</button>
+                                    <button name = "mined" class="loaderButton btn-flat grey white-text" id="{{ txHash }} {{ hash }}">Check if contract has been mined</button>
                                 </div>
                                 <div class="row">
                                     <p style="margin-top:-23px;"><small>*It could take a few hours for the contract to be mined</small></p>

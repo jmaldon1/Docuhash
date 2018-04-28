@@ -18,7 +18,8 @@ $(document).ready(function(){
 		$(document.getElementsByName("mined")).on('click', function(event){
 			$('#loader').show();
    			$('.loaderButton').hide();
-			var txHash = String(event.target.id)
+			var txHash = String(event.target.id.split(" ")[0]);
+			var hash = String(event.target.id.split(" ")[1]);
 			// var icon = 'icon' + txHash
 			web3.eth.getTransactionReceipt(txHash, function(err, receipt){
 				if(err){
@@ -43,7 +44,7 @@ $(document).ready(function(){
         				window.location.reload();
 					};
 					setTimeout(contractMined, 3000);
-					$.post('/hash', {contractAddress: receipt.contractAddress}, function(success){
+					$.post('/hash', {"contractAddress": receipt.contractAddress, "hash": hash}, function(success){
 						if(success){
 							// Materialize.Toast.removeAll();
 						}
