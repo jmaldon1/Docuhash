@@ -539,20 +539,15 @@ router.post('/hash', function(req, res, next) {
     req.session.txHash = String(obj.txHash);
     req.session.contractAddress = String(obj.contractAddress);
     req.session.randomHash = obj.hash;
-    //console.log("current shaw: " + req.session.currentShaw)
-    // console.log(req.session.randomHash)
 
-    // console.log(typeof(req.session.randomHash))
-    // console.log(req.session.randomHash == undefined)
-    // console.log(req.session.randomHash == "undefined")
-
+    //assign currentShaw to the hash of the document that the user wants to check if mined.
     if(req.session.randomHash){
         req.session.currentShaw = String(req.session.randomHash);
     }
     //if the txHash is undefined, it means the address wasn't retrieved when the TxHash was created,
     //and the user is checking later if the address is there 
     if(req.session.txHash == 'undefined'){
-        //Add the smart contract address to the file schema
+        //Adds an 'undefined' contract address to the file schema 
         File.findOneAndUpdate({ hash: req.session.currentShaw }, { $set: { contractaddress: req.session.contractAddress } }, function(err, doc) {
             if (err) throw err;
         });
