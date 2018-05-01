@@ -34,9 +34,9 @@ var mid = require('../middleware');
 // var contractInstance;
 
 // GET /google
-router.get('/google', passport.authenticate('google', {
-    scope: ['profile']
-}));
+// router.get('/google', passport.authenticate('google', {
+//     scope: ['profile']
+// }));
 
 // GET /
 router.get('/', function(req, res, next) {
